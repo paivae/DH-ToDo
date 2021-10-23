@@ -2,7 +2,6 @@
 //  LLamadas a la API
 //
 //
-//
 
 const URLAPI = "https://ctd-todo-api.herokuapp.com/v1";
 
@@ -24,20 +23,27 @@ const usuarios = {
       });
   },
   login: (correo, contrasenna) => {
-    fetch("https://ctd-todo-api.herokuapp.com/v1/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: `{"email":"${correo}","password":"${contrasenna}"}`,
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        localStorage.setItem("jwt", response.jwt);
+    return new Promise((resolve, reject) => {
+      fetch("https://ctd-todo-api.herokuapp.com/v1/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: `{"email":"${correo}","password":"${contrasenna}"}`,
       })
-      .catch((err) => {
-        console.error(err);
-      });
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.jwt) {
+            localStorage.setItem("jwt", response.jwt);
+            window.location.href = "mis-tareas.html";
+          } else {
+            resolve(response);
+          }
+        })
+        .catch((err) => {
+          reject("Fallo la aplicacion, lo sentimos.");
+        });
+    });
   },
   obtenerDatos: () => {
     let jwt = localStorage.getItem("jwt");

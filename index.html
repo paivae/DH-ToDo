@@ -8,10 +8,6 @@
 
     <!-- ---------------- estilos compartidos de login y signup ---------------- -->
     <link rel="stylesheet" href="styles/ingreso.css" />
-
-    <!-- ---------------------- logica aplicada en login ----------------------- -->
-
-    <script src="scripts/login.js"></script>
   </head>
 
   <body>
@@ -34,12 +30,16 @@
           Contraseña:
           <input id="inputPassword" type="password" />
         </label>
-
-        <button type="submit">Ingresar</button>
+        <p id="errorMsg"></p>
+        <button id="botonEnviar" type="submit">Ingresar</button>
       </form>
       <div class="ingresarA">
         <a href="signup.html">¿No tiene una cuenta? Regístrese aquí</a>
       </div>
     </div>
+
+    <!-- ---------------------- logica aplicada en login ----------------------- -->
+    <script src="scripts/api.js"></script>
+    <script src="scripts/login.js"></script>
   </body>
 </html>
