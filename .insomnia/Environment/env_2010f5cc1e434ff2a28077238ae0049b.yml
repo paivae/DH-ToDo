@@ -1,0 +1,14 @@
+_id: env_2010f5cc1e434ff2a28077238ae0049b
+type: Environment
+parentId: env_00c6d61f4e32079f000a8a8b0af727467439a853
+modified: 1634954480094
+created: 1634954469253
+name: API
+data:
+  url: https://ctd-todo-api.herokuapp.com/v1
+dataPropertyOrder:
+  "&":
+    - url
+color: null
+isPrivate: false
+metaSortKey: 1634954469253

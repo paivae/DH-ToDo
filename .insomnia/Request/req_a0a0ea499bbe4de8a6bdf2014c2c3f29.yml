@@ -1,0 +1,29 @@
+_id: req_a0a0ea499bbe4de8a6bdf2014c2c3f29
+type: Request
+parentId: fld_67c83473a2b84c2a8a897dd3c5d5f5be
+modified: 1634954727111
+created: 1634954660356
+url: "{{ _.url }}/users/getMe"
+name: Obtener Datos
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_e6b3ee1714854e16924e3c8e067bfb31
+    name: Authorization
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZsb2FyYWVAZ21haWwuY29tIiwiaWQiOjY1NSwiaWF0IjoxNjM0OTU0NjMxfQ.GiimZkEH_Mu0rEkYsA0EHOVrwcHncAWhfuqc54PyWa4
+    description: ""
+  - id: pair_b6695633f6dc4288aeaa577eef694a06
+    name: ""
+    value: ""
+    description: ""
+authentication: {}
+metaSortKey: -1634838767724
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

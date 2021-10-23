@@ -1,18 +1,16 @@
-_id: req_4bb49c468f174fb6b62d65108bd6deeb
+_id: req_4cd261f5a0df458087f5822ca319c0f9
 type: Request
 parentId: fld_67c83473a2b84c2a8a897dd3c5d5f5be
-modified: 1634954495454
-created: 1634838767774
-url: "{{ _.url }}/users"
-name: CrearUsuario
+modified: 1634954621400
+created: 1634954518731
+url: "{{ _.url }}/users/login"
+name: Login
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-      "firstName": "Flor",
-      "lastName": "A",
       "email": "floarae@gmail.com",
       "password": "flora+1234"
     }
@@ -20,9 +18,9 @@ parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_eea002b722f1457386f33223ca380169
+    id: pair_c4c892a046374ea9a447e50f7ac3b1f8
 authentication: {}
-metaSortKey: -1634838767774
+metaSortKey: -1634954518731
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
