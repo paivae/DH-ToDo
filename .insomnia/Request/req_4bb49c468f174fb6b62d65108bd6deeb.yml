@@ -1,0 +1,32 @@
+_id: req_4bb49c468f174fb6b62d65108bd6deeb
+type: Request
+parentId: fld_67c83473a2b84c2a8a897dd3c5d5f5be
+modified: 1634953952528
+created: 1634838767774
+url: https://ctd-todo-api.herokuapp.com/v1/users
+name: CrearUsuario
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "firstName": "Flor",
+      "lastName": "A",
+      "email": "floarae@gmail.com",
+      "password": "flora+1234"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_eea002b722f1457386f33223ca380169
+authentication: {}
+metaSortKey: -1634838767774
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
