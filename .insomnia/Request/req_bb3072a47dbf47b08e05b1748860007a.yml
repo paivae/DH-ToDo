@@ -1,0 +1,25 @@
+_id: req_bb3072a47dbf47b08e05b1748860007a
+type: Request
+parentId: fld_1024395be68d40f3a9d8bcdd308d9122
+modified: 1634955891672
+created: 1634955675924
+url: "{{ _.url }}/tasks/2239"
+name: BuscarTareaPorID
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_dc36c2b7f5754f36aef9aa4ee7d73054
+    name: Authorization
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZsb2FyYWVAZ21haWwuY29tIiwiaWQiOjY1NSwiaWF0IjoxNjM0OTU0NjMxfQ.GiimZkEH_Mu0rEkYsA0EHOVrwcHncAWhfuqc54PyWa4
+    description: ""
+authentication: {}
+metaSortKey: -1634955038431
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

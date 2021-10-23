@@ -1,0 +1,27 @@
+_id: req_332c12e58ac64fdf9c7ea9a0e20bfb59
+type: Request
+parentId: fld_1024395be68d40f3a9d8bcdd308d9122
+modified: 1634956155456
+created: 1634956134013
+url: "{{ _.url }}/tasks/2239"
+name: EliminarTareaPorID
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - id: pair_dc36c2b7f5754f36aef9aa4ee7d73054
+    name: Authorization
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZsb2FyYWVAZ21haWwuY29tIiwiaWQiOjY1NSwiaWF0IjoxNjM0OTU0NjMxfQ.GiimZkEH_Mu0rEkYsA0EHOVrwcHncAWhfuqc54PyWa4
+    description: ""
+authentication: {}
+metaSortKey: -1634954648656
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
