@@ -3,6 +3,7 @@
 //
 //
 
+// boton de enviar del form
 const botonEnviar = document.querySelector("#botonEnviar");
 
 function toggleBoton(activado) {
@@ -28,9 +29,6 @@ botonEnviar.addEventListener("click", function (e) {
   const inputEmail = document.querySelector("#inputEmail").value;
   const inputPassword = document.querySelector("#inputPassword").value;
   const errorMensaje = document.querySelector("#errorMsg");
-
-  // console.log(inputEmail);
-  // console.log(inputPassword);
 
   // llamo a la constante usuario definida en api.js
   usuarios
