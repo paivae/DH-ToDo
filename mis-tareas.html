@@ -21,10 +21,6 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-
-  <!-- logica de la página -->
-  <script src="./scripts/taks.js"></script>
-
   <title>ToDo</title>
 </head>
 
@@ -35,7 +31,7 @@
     </nav>
 
     <div class="user-info">
-      <p id="username">username</p>
+      <p id="username">Hola!</p>
       <div class="user-image"></div>
       <p id="closeApp">Cerrar sesión</i>
       </p>
@@ -45,14 +41,14 @@
 
   <form class="nueva-tarea">
     <div class="not-done "></div>
-    <input id="nuevaTarea" type="text" placeholder="Nueva tarea">
-    <button type="submit">
+    <input id="nuevaTarea" type="text" placeholder="Nueva tarea" autocomplete="off">
+    <button id="tarea-boton-agregar" type="submit">
       <img src="./assets/plus.png" alt="Agregar Tarea">
     </button>
   </form>
 
 
-  <ul class="tareas-pendientes">
+  <ul id="tareas-pendientes" class="tareas-pendientes">
 
     <div id="skeleton">
       <li class="tarea">
@@ -82,10 +78,12 @@
 
   <h2 class="titulo-terminadas">Tareas terminadas</h2>
 
-  <ul class="tareas-terminadas">
+  <ul id="tareas-terminadas" class="tareas-terminadas">
 
   </ul>
-
+  <!-- logica de la página -->
+  <script src="./scripts/api.js"></script>
+  <script src="./scripts/taks.js"></script>
 </body>
 
 </html>

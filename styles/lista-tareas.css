@@ -28,11 +28,12 @@ a {
 }
 
 .user-info .user-image {
+  background-image: url('../assets/profile.png');
   height: 2em;
   width: 2em;
   border-radius: 50%;
   background-color: white;
-  opacity: .4;
+  opacity: 1;
   margin-left: .7em;
 }
 
