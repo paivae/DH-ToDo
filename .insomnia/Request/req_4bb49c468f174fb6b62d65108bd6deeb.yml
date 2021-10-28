@@ -1,7 +1,7 @@
 _id: req_4bb49c468f174fb6b62d65108bd6deeb
 type: Request
 parentId: fld_67c83473a2b84c2a8a897dd3c5d5f5be
-modified: 1634954495454
+modified: 1635457679316
 created: 1634838767774
 url: "{{ _.url }}/users"
 name: CrearUsuario
@@ -11,10 +11,10 @@ body:
   mimeType: application/json
   text: |-
     {
-      "firstName": "Flor",
+      "firstName": "Hola",
       "lastName": "A",
-      "email": "floarae@gmail.com",
-      "password": "flora+1234"
+      "email": "hola@example.com",
+      "password": "claveSuperSegura1234"
     }
 parameters: []
 headers:

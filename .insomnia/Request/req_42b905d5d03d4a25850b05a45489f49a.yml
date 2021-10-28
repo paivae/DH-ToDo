@@ -1,7 +1,7 @@
 _id: req_42b905d5d03d4a25850b05a45489f49a
 type: Request
 parentId: fld_1024395be68d40f3a9d8bcdd308d9122
-modified: 1634955623698
+modified: 1635214528241
 created: 1634955248511
 url: "{{ _.url }}/tasks"
 name: CrearTarea
@@ -21,7 +21,7 @@ headers:
     id: pair_7b94403354bc44b4ba1a164b716f6b59
   - id: pair_753c6aec76e64c6b98d3b30092197585
     name: Authorization
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZsb2FyYWVAZ21haWwuY29tIiwiaWQiOjY1NSwiaWF0IjoxNjM0OTU0NjMxfQ.GiimZkEH_Mu0rEkYsA0EHOVrwcHncAWhfuqc54PyWa4
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtbWFwQGV4YW1wbGUuY29tIiwiaWQiOjg2OSwiaWF0IjoxNjM1MjEwNDU0fQ.R1LiWUsXnbkOtkKpbbvAxZWEhxEnOiIirN7D-qn-68Q
     description: ""
 authentication: {}
 metaSortKey: -1634955038481

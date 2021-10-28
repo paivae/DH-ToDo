@@ -1,7 +1,7 @@
 _id: req_a0a0ea499bbe4de8a6bdf2014c2c3f29
 type: Request
 parentId: fld_67c83473a2b84c2a8a897dd3c5d5f5be
-modified: 1634954727111
+modified: 1635186310013
 created: 1634954660356
 url: "{{ _.url }}/users/getMe"
 name: Obtener Datos
