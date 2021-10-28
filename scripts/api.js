@@ -6,6 +6,14 @@
 const URLAPI = "https://ctd-todo-api.herokuapp.com/v1";
 
 const usuarios = {
+  //
+  //  metodo crear un nuevo usuario
+  //  @param String nombre
+  //  @param String apellido
+  //  @param String correo
+  //  @param String contrasenna
+  //  @return Promise
+  //
   registrar: (nombre, apellido, correo, contrasenna) => {
     return new Promise((resolve, reject) => {
       fetch(`${URLAPI}/users`, {
@@ -30,6 +38,12 @@ const usuarios = {
         .catch((err) => reject("Fallo la aplicacion, lo sentimos.")); // si el servidor no esta disponible
     });
   },
+  //
+  //  metodo para validar un usuario
+  //  @param String correo
+  //  @param String contrasenna
+  //  @return Promise
+  //
   login: (correo, contrasenna) => {
     return new Promise((resolve, reject) => {
       fetch(`${URLAPI}/users/login`, {
@@ -54,6 +68,10 @@ const usuarios = {
         .catch((err) => reject("Fallo la aplicacion, lo sentimos.")); // si el servidor no esta disponible
     });
   },
+  //
+  //  metodo para obtener los datos de un usuario desde su jwt
+  //  @return Promise
+  //
   obtenerDatos: () => {
     return new Promise((resolve, reject) => {
       let jwt = localStorage.getItem("jwt");
@@ -80,6 +98,11 @@ const usuarios = {
 };
 
 const tareas = {
+  //
+  // metodo para agregar una nueva tarea
+  // @param Object description
+  //  @return Promise
+  //
   agregar: (descripcion) => {
     // Agrega una nueva tarea
     return new Promise((resolve, reject) => {
@@ -106,6 +129,10 @@ const tareas = {
         });
     });
   },
+  //
+  // metodo para listar todas las tareas
+  //  @return Promise
+  //
   listado: () => {
     return new Promise((resolve, reject) => {
       fetch(`${URLAPI}/tasks`, {
@@ -129,6 +156,11 @@ const tareas = {
         });
     });
   },
+  //
+  //  metodo para completar una tarea
+  //  @param String idTarea
+  //  @return Promise
+  //
   completar: (idTarea) => {
     return new Promise((resolve, reject) => {
       fetch(`${URLAPI}/tasks/${idTarea}`, {
@@ -148,6 +180,69 @@ const tareas = {
             // si la aplicacion devuelve otro status code
             reject(response);
           }
+        })
+        .catch((err) => {
+          alert("Fallo la aplicacion, lo sentimos."); // si el servidor no esta disponible
+        });
+    });
+  },
+  //
+  //  metodo para pasar una tarea que esta completa a pendiente
+  //  @param String idTarea
+  //  @return Promise
+  //
+  descompletar: (idTarea) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${URLAPI}/tasks/${idTarea}`, {
+        method: "PUT",
+        headers: {
+          Authorization: localStorage.getItem("jwt"),
+          "Content-Type": "application/json",
+        },
+        body: '{"completed": false}',
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          // si se actualizo correctamente
+          if (typeof response === "object") {
+            resolve(response);
+          } else {
+            // si la aplicacion devuelve otro status code
+            reject(response);
+          }
+        })
+        .catch((err) => {
+          alert("Fallo la aplicacion, lo sentimos."); // si el servidor no esta disponible
+        });
+    });
+  },
+  //
+  //  metodo para eliminar una tarea
+  //  @param String idTarea
+  //  @return Promise
+  //
+  eliminar: (idTarea) => {
+    return new Promise((resolve, reject) => {
+      fetch(`${URLAPI}/tasks/${idTarea}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("jwt"),
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          // Si la api respinde con el codido 200
+          // no hago response.json() por que no necesito el cuerpo
+          if (response.status === 200) {
+            resolve("ok");
+          } else {
+            // si no sale bien el borrar una tarea, quiero obtener el mensaje de error
+            response.json();
+          }
+        })
+        .then((response) => {
+          // envio el mensaje de error al usuario
+          reject(response);
         })
         .catch((err) => {
           alert("Fallo la aplicacion, lo sentimos."); // si el servidor no esta disponible

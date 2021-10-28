@@ -12,7 +12,26 @@ const inputNuevaTarea = document.querySelector("#nuevaTarea");
 const botonTareaAgregar = document.querySelector("#tarea-boton-agregar");
 const botonCerrarSesion = document.querySelector("#closeApp");
 
+// funciones para mostrar mensajes de exito o error
+function popupExito(mensaje) {
+  Swal.fire({
+    icon: "success",
+    title: "Exito",
+    text: mensaje,
+  });
+}
+
+function popupError(mensaje) {
+  Swal.fire({
+    icon: "error",
+    title: "Algo salio mal",
+    text: mensaje,
+  });
+}
+
+//
 // validando el token guardado en localstorage
+//
 usuarios
   .obtenerDatos()
   .then((response) => {
@@ -26,10 +45,36 @@ usuarios
     window.location.href = "index.html";
   });
 
+//
+// evento para agregar una tarea
+//
+botonTareaAgregar.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (inputNuevaTarea.value.length === 0 || inputNuevaTarea.value === " ") {
+    popupError("El titulo de la tarea no puede estar vacio.");
+  } else {
+    // si se valida el titulo de la tarea, se carga por la api
+    tareas
+      .agregar(inputNuevaTarea.value)
+      .then((response) => {
+        // si la tarea se cargo correctamente, borro el formulario
+        inputNuevaTarea.value = "";
+        // actualizo la lista de tareas
+        buscarTareas();
+      })
+      .catch((error) => {
+        popupError(error);
+      });
+  }
+});
+
+//
 // funcion para buscar la lista de tareas
+//
 function buscarTareas() {
   tareas.listado().then((response) => {
-    // variables
+    // variables para guardar el html de las tareas
     let tareasCompletas = "";
     let tareasIncompletas = "";
 
@@ -41,7 +86,13 @@ function buscarTareas() {
         tareasCompletas += `<li class="tarea">
         <div class="descripcion">
           <p class="nombre">${tarea.description}</p>
-          <p class="timestamp">Creada: ${fecha.toLocaleDateString()}</p>
+         
+          <!-- Parte nueva para agregar botones de acciones en tareas cerradas, la parte nueva no lleva la fecha( se elimino )-->
+          <div>
+            <button><i tareaid="${tarea.id}" class="fas fa-undo-alt change boton-reabrir"></i></button>
+            <button><i tareaid="${tarea.id}" class="far fa-trash-alt boton-borrar"></i></button>
+          </div>
+          <!-- Fin de parte nueva -->
         </div>
       </li>`;
       } else {
@@ -67,61 +118,71 @@ function buscarTareas() {
         completarTarea(e.target.attributes.getNamedItem("tareaid").value);
       });
     });
+
+    // agregando eventos al boton para reabrir tarea
+    document.querySelectorAll(".boton-reabrir").forEach((nodo) => {
+      nodo.addEventListener("click", function (e) {
+        reabrirTarea(e.target.attributes.getNamedItem("tareaid").value);
+      });
+    });
+
+    // agregando eventos al boton para eliminar una tarea
+    document.querySelectorAll(".boton-borrar").forEach((nodo) => {
+      nodo.addEventListener("click", function (e) {
+        eliminarTarea(e.target.attributes.getNamedItem("tareaid").value);
+      });
+    });
   });
 }
 
+//
 // funcion para completar la tarea
+//
 function completarTarea(tareaID) {
   tareas
     .completar(tareaID)
     .then((response) => {
-      Swal.fire({
-        icon: "success",
-        title: "Exito",
-        text: "Tarea completada correctamente!",
-      });
+      popupExito("Tarea completada correctamente!");
       buscarTareas();
     })
     .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Tarea no completada",
-        text: error,
-      });
+      popupError(error);
     });
 }
 
-// evento para agregar una tarea
-botonTareaAgregar.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  if (inputNuevaTarea.value.length === 0 || inputNuevaTarea.value === " ") {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "El titulo de la tarea no puede estar vacio.",
+//
+// funcion para reabrir una tarea
+//
+function reabrirTarea(tareaID) {
+  tareas
+    .descompletar(tareaID)
+    .then((response) => {
+      popupExito("La tarea se movio a pendientes.");
+      buscarTareas();
+    })
+    .catch((error) => {
+      popupError(error);
     });
-  } else {
-    // si se valida el titulo de la tarea, se carga por la api
-    tareas
-      .agregar(inputNuevaTarea.value)
-      .then((response) => {
-        // si la tarea se cargo correctamente, borro el formulario
-        inputNuevaTarea.value = "";
-        // actualizo la lista de tareas
-        buscarTareas();
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Tarea no creada",
-          text: error,
-        });
-      });
-  }
-});
+}
 
+//
+// funcion para elimnar una tarea
+//
+function eliminarTarea(tareaID) {
+  tareas
+    .eliminar(tareaID)
+    .then((response) => {
+      popupExito("La tarea se elimino correctamente.");
+      buscarTareas();
+    })
+    .catch((error) => {
+      popupError(error);
+    });
+}
+
+//
 // cerrar sesion
+//
 botonCerrarSesion.addEventListener("click", function (e) {
   // elimino el token
   localStorage.removeItem("jwt");
